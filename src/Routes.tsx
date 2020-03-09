@@ -1,6 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { AsyncStorage, ActivityIndicator } from 'react-native';
+import { AsyncStorage, ActivityIndicator, View, Button } from 'react-native';
+import { Linking } from 'expo';
+import * as WebBrowser from 'expo-web-browser';
 
 import { AuthContext } from './context/AuthProvider';
 import Center from './components/Center';
@@ -34,7 +36,24 @@ export function Routes() {
 
   return (
     <NavigationContainer>
-      <MainAppTabs />
+      {/* <MainAppTabs /> */}
+      <Center>
+        <Button
+          title="log with Facebook"
+          onPress={() => {
+            //   Linking.openURL(');
+            WebBrowser.openBrowserAsync(
+              'http://localhost:1337/connect/facebook'
+            );
+          }}
+        />
+        <Button
+          title="log with Google"
+          onPress={() => {
+            WebBrowser.openBrowserAsync('http://localhost:1337/connect/google');
+          }}
+        />
+      </Center>
     </NavigationContainer>
   );
 }

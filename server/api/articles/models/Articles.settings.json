@@ -1,0 +1,54 @@
+{
+  "connection": "default",
+  "collectionName": "Article",
+  "info": {
+    "name": "articles",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "price": {
+      "type": "float"
+    },
+    "added_at": {
+      "type": "date"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "plugin": "upload"
+    },
+    "description": {
+      "type": "text"
+    },
+    "state": {
+      "type": "string"
+    },
+    "size": {
+      "type": "string"
+    },
+    "category": {
+      "enum": [
+        "clothes",
+        "shoes",
+        "accessories"
+      ],
+      "type": "enumeration"
+    },
+    "user": {
+      "model": "user",
+      "via": "articles",
+      "plugin": "users-permissions"
+    }
+  }
+}
