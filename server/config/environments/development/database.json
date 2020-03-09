@@ -1,0 +1,17 @@
+{
+  "defaultConnection": "default",
+  "connections": {
+    "default": {
+      "connector": "strapi-hook-bookshelf",
+      "settings": {
+        "client": "postgres",
+        "database": "nice-cop",
+        "host": "51.159.25.24",
+        "port": "55542",
+        "username": "loriick",
+        "password": "@Moione01"
+      },
+      "options": {}
+    }
+  }
+}
