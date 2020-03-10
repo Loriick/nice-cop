@@ -14,7 +14,7 @@ export default function Card({ navigation, item }) {
         >
           <Image
             source={{
-              uri: `http://localhost:1337${image[0].url}`,
+              uri: `https://nice-cop.kevinmanssat.fr${image[0].url}`,
             }}
             style={styles.img}
           />

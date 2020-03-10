@@ -8,8 +8,8 @@ import AuthProvider from './AuthProvider';
 import { Routes } from '../Routes';
 
 const client = new ApolloClient({
-  link: new HttpLink({ uri: 'http://localhost:1337/graphql' }),
-  cache: new InMemoryCache()
+  link: new HttpLink({ uri: 'https://nice-cop.kevinmanssat.fr/graphql' }),
+  cache: new InMemoryCache(),
 });
 
 export function Providers() {

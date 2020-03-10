@@ -10,8 +10,8 @@ export default function AuthScreen() {
         title="log with Facebook"
         onPress={async () => {
           let res = await WebBrowser.openAuthSessionAsync(
-            'http://localhost:1337/connect/facebook',
-            'exp://10.93.183.192:19000'
+            'https://nice-cop.kevinmanssat.fr/connect/facebook',
+            'https://google.fr'
           );
 
           console.log(res);
@@ -20,7 +20,9 @@ export default function AuthScreen() {
       <Button
         title="log with Google"
         onPress={() => {
-          WebBrowser.openBrowserAsync('http://localhost:1337/connect/google');
+          WebBrowser.openBrowserAsync(
+            'https://nice-cop.kevinmanssat.fr/connect/google'
+          );
         }}
       />
     </Center>

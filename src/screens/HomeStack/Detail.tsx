@@ -15,7 +15,7 @@ export default function Detail({ navigation, route }) {
   return (
     <ScrollView style={styles.detail}>
       <Image
-        source={{ uri: `http://localhost:1337${image[0].url}` }}
+        source={{ uri: `https://nice-cop.kevinmanssat.fr${image[0].url}` }}
         style={styles.detail_image}
       />
       <View style={styles.detail_info}>
