@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Owner from './Owner';
 
 export default function Card({ navigation, item }) {
   const { title, image, size, user, price } = item;
@@ -25,22 +26,7 @@ export default function Card({ navigation, item }) {
             <Text style={styles.price}>{price} €</Text>
             <Text style={styles.size}>Taille : {size}</Text>
           </View>
-          <View style={styles.card_user}>
-            <Image
-              source={{
-                uri:
-                  'https://fr.screenja.com/static/img/thumbs/gohan-ssj2-1-normal-636.png',
-              }}
-              style={styles.card_user_picture}
-            />
-            <Text
-              style={styles.card_user_name}
-              numberOfLines={1}
-              onPress={() => navigation.navigate('AddArticle')}
-            >
-              par {user.username} et un autre
-            </Text>
-          </View>
+          <Owner navigation={navigation} user={user} string={`par {user}`} />
         </TouchableOpacity>
       </View>
     </View>
@@ -66,25 +52,6 @@ const styles = StyleSheet.create({
     padding: 20,
     width: '100%',
   },
-  card_user: {
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-    alignItems: 'center',
-    marginTop: 15,
-    paddingRight: 25,
-  },
-  card_user_picture: {
-    width: 20,
-    height: 20,
-    borderRadius: 15,
-    resizeMode: 'contain',
-    marginRight: 7.5,
-  },
-  card_user_name: {
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-    fontSize: 14,
-  },
   card_description: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -101,7 +68,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     flexWrap: 'nowrap',
     marginBottom: 7.5,
+    color: '#fc381e',
   },
-  price: { fontSize: 18 },
+  price: { fontSize: 18, fontWeight: 'bold' },
   size: { fontSize: 14, opacity: 0.5 },
 });

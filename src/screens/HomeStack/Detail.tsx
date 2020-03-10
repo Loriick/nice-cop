@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, ScrollView, View, Image, StyleSheet } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
+import Owner from '../../components/Owner';
 
 export default function Detail({ navigation, route }) {
   const {
@@ -19,6 +20,12 @@ export default function Detail({ navigation, route }) {
         style={styles.detail_image}
       />
       <View style={styles.detail_info}>
+        <Owner
+          navigation={navigation}
+          user={user}
+          string={`{user} met en vente`}
+          ownerViewStyle={{ marginVertical: 7.5 }}
+        />
         <Text style={styles.detail_info_title}>{title}</Text>
         <Text style={styles.price}>{price} €</Text>
         <View style={{ marginVertical: 30 }}>
@@ -48,14 +55,17 @@ const styles = StyleSheet.create({
   detail_info_title: {
     fontSize: 24,
     fontWeight: 'bold',
+    color: '#fc381e',
+    lineHeight: 24 * 1.5,
   },
   detail_info_description: {
     fontSize: 16,
+    lineHeight: 16 * 1.5,
   },
   detail_info_state: {
     color: 'green',
     fontSize: 16,
   },
-  price: { fontSize: 18 },
-  size: { fontSize: 14 },
+  price: { fontSize: 18, fontWeight: 'bold', lineHeight: 18 * 1.5 },
+  size: { fontSize: 16, lineHeight: 16 * 1.5 },
 });
