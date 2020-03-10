@@ -59,16 +59,6 @@
     "articles": {
       "collection": "articles",
       "via": "user"
-    },
-    "avatar": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload"
-    },
-    "picture": {
-      "model": "file",
-      "via": "related",
-      "plugin": "upload"
     }
   }
 }
