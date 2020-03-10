@@ -3,6 +3,8 @@ import { Text } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 import Center from './components/Center';
+import AddArticleScreen from './screens/AddArticleStack/index';
+import HomeStack from './screens/HomeStack/index';
 
 type AppParamList = {
   Home: undefined;
@@ -10,20 +12,6 @@ type AppParamList = {
   Profile: undefined;
 };
 
-function Home() {
-  return (
-    <Center>
-      <Text>HOME</Text>
-    </Center>
-  );
-}
-function AddPost() {
-  return (
-    <Center>
-      <Text>ADD ARTICLE</Text>
-    </Center>
-  );
-}
 function Profile() {
   return (
     <Center>
@@ -58,8 +46,8 @@ export default function MainAppTabs() {
         inactiveTintColor: 'gray'
       }}
     >
-      <Tabs.Screen name="Home" component={Home} />
-      <Tabs.Screen name="AddArticle" component={AddPost} />
+      <Tabs.Screen name="Home" component={HomeStack} />
+      <Tabs.Screen name="AddArticle" component={AddArticleScreen} />
       <Tabs.Screen name="Profile" component={Profile} />
     </Tabs.Navigator>
   );
