@@ -20,9 +20,6 @@
     "price": {
       "type": "float"
     },
-    "added_at": {
-      "type": "date"
-    },
     "image": {
       "collection": "file",
       "via": "related",
@@ -30,9 +27,6 @@
     },
     "description": {
       "type": "text"
-    },
-    "state": {
-      "type": "string"
     },
     "size": {
       "type": "string"
@@ -49,6 +43,15 @@
       "model": "user",
       "via": "articles",
       "plugin": "users-permissions"
+    },
+    "state": {
+      "enum": [
+        "Neuf",
+        "Bon",
+        "Correct",
+        "Mauvais"
+      ],
+      "type": "enumeration"
     }
   }
 }

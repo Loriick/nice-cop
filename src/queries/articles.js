@@ -9,6 +9,7 @@ export const GET_ARTICLES = gql`
       state
       size
       category
+      description
       image {
         url
       }

@@ -3,7 +3,6 @@ import { FlatList, Text } from 'react-native';
 import Card from '../../components/Card';
 import { useQuery } from '@apollo/react-hooks';
 import { GET_ARTICLES } from '../../queries/articles';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function Feed({ navigation }) {
   const { data, loading, error } = useQuery(GET_ARTICLES);

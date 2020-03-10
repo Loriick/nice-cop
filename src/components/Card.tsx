@@ -23,7 +23,7 @@ export default function Card({ navigation, item }) {
           </Text>
           <View style={styles.card_description}>
             <Text style={styles.price}>{price} €</Text>
-            <Text style={styles.size}>Taille: {size}</Text>
+            <Text style={styles.size}>Taille : {size}</Text>
           </View>
           <View style={styles.card_user}>
             <Image
@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
   },
   img: {
     width: '100%',
-    height: 200,
     resizeMode: 'contain',
+    aspectRatio: 1 / 1,
   },
   title: {
     fontSize: 20,

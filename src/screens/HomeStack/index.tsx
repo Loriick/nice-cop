@@ -8,10 +8,18 @@ const Stack = createStackNavigator();
 export default function HomeStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Feed" component={Feed} />
+      <Stack.Screen
+        name="Feed"
+        options={({ route }) => ({
+          headerTitleAlign: 'left',
+        })}
+        component={Feed}
+      />
       <Stack.Screen
         name="Detail"
-        options={({ route }) => ({ headerTitle: route.params.item.title })}
+        options={({ route }) => ({
+          headerTitle: route.params.item.title,
+        })}
         component={Detail}
       />
     </Stack.Navigator>
