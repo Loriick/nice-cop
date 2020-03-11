@@ -11,7 +11,7 @@ export default function HomeStack() {
       <Stack.Screen
         name="Feed"
         options={({ route }) => ({
-          headerTitleAlign: 'left',
+          headerTitleAlign: 'left'
         })}
         component={Feed}
       />
@@ -19,13 +19,13 @@ export default function HomeStack() {
         name="Detail"
         options={({ route }) => ({
           headerBackTitleStyle: {
-            color: '#fc381e',
+            color: '#fc381e'
           },
           headerTintColor: '#fc381e',
           headerTitleStyle: {
-            color: '#1A1A1A',
+            color: '#1A1A1A'
           },
-          headerTitle: route.params.item.title,
+          headerTitle: route.params?.item.title
         })}
         component={Detail}
       />

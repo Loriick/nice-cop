@@ -13,6 +13,7 @@ export const GET_ARTICLES = gql`
       image {
         url
       }
+      pictureUri
       created_at
       user {
         username

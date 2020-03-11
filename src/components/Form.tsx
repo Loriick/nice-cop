@@ -20,7 +20,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Constants } from 'expo';
 
-export default function Form({ values, openActionSheet, setValues }) {
+export default function Form({
+  values,
+  openActionSheet,
+  setValues,
+  handleSubmit
+}) {
   return (
     <ScrollView style={{ flex: 1 }} keyboardDismissMode="on-drag">
       <View
@@ -62,14 +67,14 @@ export default function Form({ values, openActionSheet, setValues }) {
           <RNPickerSelect
             onValueChange={value => setValues({ ...values, state: value })}
             items={[
-              { label: 'Neuf', value: 'neuf', key: 'new' },
-              { label: 'Bon état', value: 'bon', key: 'good' },
+              { label: 'Neuf', value: 'Neuf', key: 'new' },
+              { label: 'Bon état', value: 'Bon', key: 'good' },
               {
                 label: 'Satisfaisant',
-                value: 'correct',
+                value: 'Correct',
                 key: 'good with conditions'
               },
-              { label: 'Mauvais', value: 'mauvais', key: 'bad' }
+              { label: 'Mauvais', value: 'Mauvais', key: 'bad' }
             ]}
             value={values.state}
           />
@@ -120,7 +125,7 @@ export default function Form({ values, openActionSheet, setValues }) {
               paddingHorizontal: 10,
               justifyContent: 'center',
               alignItems: 'center',
-              backgroundColor: values.imageUri ? '' : 'grey',
+              backgroundColor: values.imageUri ? 'transparent' : 'grey',
               borderRadius: 15
             }}
           >
@@ -164,7 +169,7 @@ export default function Form({ values, openActionSheet, setValues }) {
           </View>
         </View>
         <View>
-          <Button title="Ajouter" onPress={() => console.log(values)} />
+          <Button title="Ajouter" onPress={() => handleSubmit()} />
         </View>
       </View>
     </ScrollView>
@@ -173,7 +178,7 @@ export default function Form({ values, openActionSheet, setValues }) {
 
 const style = StyleSheet.create({
   inputContainer: {
-    width: '80%',
+    width: '90%',
     marginVertical: 10,
     backgroundColor: 'white',
     borderRadius: 15,

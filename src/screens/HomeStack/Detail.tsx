@@ -11,12 +11,17 @@ export default function Detail({ navigation, route }) {
     size,
     user,
     price,
+    pictureUri
   } = route.params.item;
 
   return (
     <ScrollView style={styles.detail}>
       <Image
-        source={{ uri: `https://nice-cop.kevinmanssat.fr${image[0].url}` }}
+        source={{
+          uri: pictureUri
+            ? pictureUri
+            : `https://nice-cop.kevinmanssat.fr${image[0].url}`
+        }}
         style={styles.detail_image}
       />
       <View style={styles.detail_info}>
@@ -41,30 +46,30 @@ export default function Detail({ navigation, route }) {
 const styles = StyleSheet.create({
   detail: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
   detail_image: {
     width: '100%',
     resizeMode: 'contain',
-    aspectRatio: 1 / 1,
+    aspectRatio: 1 / 1
   },
   detail_info: {
-    paddingHorizontal: 15,
+    paddingHorizontal: 15
   },
   detail_info_title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: '#fc381e',
-    lineHeight: 24 * 1.5,
+    lineHeight: 24 * 1.5
   },
   detail_info_description: {
     fontSize: 16,
-    lineHeight: 16 * 1.5,
+    lineHeight: 16 * 1.5
   },
   detail_info_state: {
     color: 'green',
-    fontSize: 16,
+    fontSize: 16
   },
   price: { fontSize: 18, fontWeight: 'bold', lineHeight: 18 * 1.5 },
-  size: { fontSize: 16, lineHeight: 16 * 1.5 },
+  size: { fontSize: 16, lineHeight: 16 * 1.5 }
 });

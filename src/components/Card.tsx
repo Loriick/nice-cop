@@ -15,7 +15,10 @@ export default function Card({ navigation, item }) {
         >
           <Image
             source={{
-              uri: `https://nice-cop.kevinmanssat.fr${image[0].url}`,
+              uri:
+                image.length > 0
+                  ? `https://nice-cop.kevinmanssat.fr${image[0].url}`
+                  : item.pictureUri
             }}
             style={styles.img}
           />
@@ -39,7 +42,7 @@ const styles = StyleSheet.create({
     paddingBottom: 7.5,
     paddingLeft: 7.5,
     paddingRight: 7.5,
-    width: '50%',
+    width: '50%'
   },
   card: {
     backgroundColor: '#fff',
@@ -50,26 +53,26 @@ const styles = StyleSheet.create({
     shadowRadius: 20,
     elevation: 20,
     padding: 20,
-    width: '100%',
+    width: '100%'
   },
   card_description: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    alignItems: 'flex-end',
+    alignItems: 'flex-end'
   },
   img: {
     width: '100%',
     resizeMode: 'contain',
-    aspectRatio: 1 / 1,
+    aspectRatio: 1 / 1
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     flexWrap: 'nowrap',
     marginBottom: 7.5,
-    color: '#fc381e',
+    color: '#fc381e'
   },
   price: { fontSize: 18, fontWeight: 'bold' },
-  size: { fontSize: 14, opacity: 0.5 },
+  size: { fontSize: 14, opacity: 0.5 }
 });

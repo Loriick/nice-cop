@@ -9,7 +9,7 @@ import { Routes } from '../Routes';
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: 'https://nice-cop.kevinmanssat.fr/graphql' }),
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache()
 });
 
 export function Providers() {

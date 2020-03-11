@@ -1,8 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { StatusBar, Text } from 'react-native';
-import Center from './components/Center';
+import { StatusBar } from 'react-native';
 import HomeStack from './screens/HomeStack/index';
 import AddArticleStack from './screens/AddArticleStack/index';
 import ProfileStack from './screens/Profile/index';
@@ -34,14 +33,14 @@ export default function MainAppTabs() {
 
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
-          },
+          }
         })}
         tabBarOptions={{
           activeTintColor: '#fff',
           inactiveTintColor: '#F0F0F0',
           style: {
-            backgroundColor: '#fc381e',
-          },
+            backgroundColor: '#fc381e'
+          }
         }}
       >
         <Tabs.Screen name="Home" component={HomeStack} />
