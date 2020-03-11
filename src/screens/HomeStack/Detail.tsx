@@ -23,7 +23,7 @@ export default function Detail({ navigation, route }) {
         <Owner
           navigation={navigation}
           user={user}
-          string={`{user} met en vente`}
+          string={`{user} want to sell`}
           ownerViewStyle={{ marginVertical: 7.5 }}
         />
         <Text style={styles.detail_info_title}>{title}</Text>
@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
   detail: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 0,
   },
   detail_image: {
     width: '100%',

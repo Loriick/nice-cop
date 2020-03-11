@@ -1,14 +1,19 @@
 import { useQuery } from '@apollo/react-hooks';
 import React from 'react';
-import { FlatList, Text } from 'react-native';
+import { FlatList, Text, ActivityIndicator } from 'react-native';
 import Card from '../../components/Card';
 import { GET_ARTICLES } from '../../queries/articles';
+import Center from '../../components/Center';
 
 export default function Feed({ navigation }) {
   const { data, loading, error } = useQuery(GET_ARTICLES);
 
   if (loading) {
-    return <Text>Loading...</Text>;
+    return (
+      <Center>
+        <ActivityIndicator size="large" />
+      </Center>
+    );
   }
 
   if (error) {

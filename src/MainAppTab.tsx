@@ -3,23 +3,15 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { StatusBar, Text } from 'react-native';
 import Center from './components/Center';
-import AddArticleScreen from './screens/AddArticleStack/index';
 import HomeStack from './screens/HomeStack/index';
 import AddArticleStack from './screens/AddArticleStack/index';
+import ProfileStack from './screens/Profile/index';
 
 type AppParamList = {
   Home: undefined;
   AddArticle: undefined;
   Profile: undefined;
 };
-
-function Profile() {
-  return (
-    <Center>
-      <Text>PROFILE</Text>
-    </Center>
-  );
-}
 
 const Tabs = createBottomTabNavigator<AppParamList>();
 
@@ -53,8 +45,8 @@ export default function MainAppTabs() {
         }}
       >
         <Tabs.Screen name="Home" component={HomeStack} />
-        <Tabs.Screen name="AddArticle" component={AddArticleScreen} />
-        <Tabs.Screen name="Profile" component={Profile} />
+        <Tabs.Screen name="AddArticle" component={AddArticleStack} />
+        <Tabs.Screen name="Profile" component={ProfileStack} />
       </Tabs.Navigator>
     </>
   );
