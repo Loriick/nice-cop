@@ -3,7 +3,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Owner from './Owner';
 
-export default function Card({ navigation, item }) {
+export default function Card({ navigation, item, type }) {
   const { title, image, size, user, price } = item;
 
   return (
@@ -29,7 +29,9 @@ export default function Card({ navigation, item }) {
             <Text style={styles.price}>{price} €</Text>
             <Text style={styles.size}>Taille : {size}</Text>
           </View>
-          <Owner navigation={navigation} user={user} string={`par {user}`} />
+          {type !== 'simple' && (
+            <Owner navigation={navigation} user={user} string={`par {user}`} />
+          )}
         </TouchableOpacity>
       </View>
     </View>
