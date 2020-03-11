@@ -11,7 +11,7 @@ export default function AuthScreen() {
         onPress={async () => {
           let res = await WebBrowser.openAuthSessionAsync(
             'http://localhost:1337/connect/facebook',
-            'https://google.fr'
+            'exp://10.93.183.192:19000'
           );
 
           console.log(res);

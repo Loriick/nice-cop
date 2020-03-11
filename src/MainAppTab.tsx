@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import Center from './components/Center';
 import AddArticleScreen from './screens/AddArticleStack/index';
 import HomeStack from './screens/HomeStack/index';
+import AddArticleStack from './screens/AddArticleStack/index';
 
 type AppParamList = {
   Home: undefined;
@@ -47,7 +48,7 @@ export default function MainAppTabs() {
       }}
     >
       <Tabs.Screen name="Home" component={HomeStack} />
-      <Tabs.Screen name="AddArticle" component={AddArticleScreen} />
+      <Tabs.Screen name="AddArticle" component={AddArticleStack} />
       <Tabs.Screen name="Profile" component={Profile} />
     </Tabs.Navigator>
   );
