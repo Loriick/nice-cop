@@ -26,7 +26,8 @@ export default function Feed({ navigation }) {
       numColumns={2}
       keyExtractor={(item, i) => item.title + i}
       renderItem={({ item }) => <Card navigation={navigation} item={item} />}
-      style={{ padding: 7.5, backgroundColor: '#fff' }}
+      style={{ backgroundColor: '#fff' }}
+      contentContainerStyle={{ padding: 7.5 }}
     />
   );
 }

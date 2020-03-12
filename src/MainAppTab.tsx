@@ -33,14 +33,14 @@ export default function MainAppTabs() {
 
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
-          }
+          },
         })}
         tabBarOptions={{
           activeTintColor: '#fff',
           inactiveTintColor: '#F0F0F0',
           style: {
-            backgroundColor: '#fc381e'
-          }
+            backgroundColor: '#fc381e',
+          },
         }}
       >
         <Tabs.Screen name="Home" component={HomeStack} />

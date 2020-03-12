@@ -10,35 +10,91 @@ import {
   ScrollView,
   SafeAreaView,
   Image,
-  Button
+  Button,
 } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import { TextInput } from 'react-native-gesture-handler';
 import RNPickerSelect from 'react-native-picker-select';
 import { Ionicons } from '@expo/vector-icons';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Constants } from 'expo';
 
 export default function Form({
   values,
   openActionSheet,
   setValues,
-  handleSubmit
+  handleSubmit,
 }) {
   return (
-    <ScrollView style={{ flex: 1 }} keyboardDismissMode="on-drag">
+    <ScrollView
+      contentContainerStyle={{ padding: 15, backgroundColor: '#fff' }}
+      style={{ flex: 1, backgroundColor: '#fff' }}
+      keyboardDismissMode="on-drag"
+    >
       <View
         style={{
-          alignItems: 'center'
+          flex: 1,
+          alignItems: 'center',
         }}
       >
-        <View style={{ ...style.inputContainer, marginTop: 50 }}>
+        <View
+          style={{
+            width: '100%',
+          }}
+        >
+          {values.imageUri !== '' ? (
+            <View
+              style={{
+                width: '100%',
+                aspectRatio: 1 / 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 15,
+              }}
+            >
+              <Image
+                source={{ uri: values.imageUri }}
+                style={{
+                  borderRadius: 15,
+                  width: '100%',
+                  aspectRatio: 1 / 1,
+                  resizeMode: 'cover',
+                }}
+              />
+            </View>
+          ) : (
+            <View
+              style={{
+                width: '100%',
+                aspectRatio: 1 / 1,
+                borderRadius: 15,
+                backgroundColor: '#345995',
+              }}
+            >
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                onPress={() => openActionSheet()}
+              >
+                <Ionicons
+                  name="ios-camera"
+                  size={20}
+                  style={{ color: '#fff', marginRight: 10 }}
+                />
+                <Text style={{ color: '#fff' }}>Ajouter une Photo</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        </View>
+        <View style={style.inputContainer}>
           <TextInput
             placeholder="Nom du produit"
             style={style.input}
             value={values.title}
-            onChangeText={text => setValues({ ...values, title: text })}
+            onChangeText={(text) => setValues({ ...values, title: text })}
           />
         </View>
         <View style={{ ...style.inputContainer, minHeight: 150 }}>
@@ -48,10 +104,9 @@ export default function Form({
             numberOfLines={10}
             style={{
               justifyContent: 'flex-start',
-              paddingLeft: 5
             }}
             value={values.description}
-            onChangeText={text => setValues({ ...values, description: text })}
+            onChangeText={(text) => setValues({ ...values, description: text })}
           />
         </View>
         <View style={style.inputContainer}>
@@ -60,21 +115,21 @@ export default function Form({
             keyboardType="numeric"
             style={style.input}
             value={values.price}
-            onChangeText={text => setValues({ ...values, price: text })}
+            onChangeText={(text) => setValues({ ...values, price: text })}
           />
         </View>
         <View style={style.inputContainer}>
           <RNPickerSelect
-            onValueChange={value => setValues({ ...values, state: value })}
+            onValueChange={(value) => setValues({ ...values, state: value })}
             items={[
               { label: 'Neuf', value: 'Neuf', key: 'new' },
               { label: 'Bon état', value: 'Bon', key: 'good' },
               {
                 label: 'Satisfaisant',
                 value: 'Correct',
-                key: 'good with conditions'
+                key: 'good with conditions',
               },
-              { label: 'Mauvais', value: 'Mauvais', key: 'bad' }
+              { label: 'Mauvais', value: 'Mauvais', key: 'bad' },
             ]}
             value={values.state}
           />
@@ -84,92 +139,34 @@ export default function Form({
             placeholder="Taille"
             value={values.size}
             style={style.input}
-            onChangeText={text => setValues({ ...values, size: text })}
+            onChangeText={(text) => setValues({ ...values, size: text })}
           />
         </View>
         <View style={style.inputContainer}>
           <RNPickerSelect
-            onValueChange={value => setValues({ ...values, category: value })}
+            onValueChange={(value) => setValues({ ...values, category: value })}
             items={[
               {
                 label: 'Vêtements',
                 value: 'clothes',
-                key: 'clothes'
+                key: 'clothes',
               },
               {
                 label: 'Sneakers',
                 value: 'shoes',
-                key: 'shoes'
+                key: 'shoes',
               },
               {
                 label: 'Accessoires',
                 value: 'accessories',
-                key: 'accessories'
-              }
+                key: 'accessories',
+              },
             ]}
             value={values.category}
           />
         </View>
-        <View
-          style={{
-            height: 400,
-            width: '80%',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-          <View
-            style={{
-              height: '60%',
-              width: '100%',
-              paddingHorizontal: 10,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: values.imageUri ? 'transparent' : 'grey',
-              borderRadius: 15
-            }}
-          >
-            {values.imageUri ? (
-              <Image
-                source={{ uri: values.imageUri }}
-                style={{ width: '100%', aspectRatio: 1 / 1 }}
-                resizeMode="contain"
-              />
-            ) : (
-              <Text>Pas de Photo</Text>
-            )}
-          </View>
-
-          <View
-            style={{
-              height: '10%',
-              width: 200,
-              borderColor: 'red',
-              borderWidth: 1,
-              borderRadius: 15,
-              marginTop: '10%'
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'row',
-                flex: 1
-              }}
-              onPress={() => openActionSheet()}
-            >
-              <Ionicons
-                name="ios-camera"
-                size={20}
-                style={{ marginRight: 10 }}
-              />
-              <Text>Ajouter une Photo</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-        <View>
-          <Button title="Ajouter" onPress={() => handleSubmit()} />
+        <View style={style.add_button}>
+          <Button title="Ajouter" onPress={() => handleSubmit()} color="#fff" />
         </View>
       </View>
     </ScrollView>
@@ -178,16 +175,17 @@ export default function Form({
 
 const style = StyleSheet.create({
   inputContainer: {
-    width: '90%',
-    marginVertical: 10,
-    backgroundColor: 'white',
+    width: '100%',
+    marginTop: 15,
+    backgroundColor: '#f0f0f0',
     borderRadius: 15,
     padding: 15,
-    shadowColor: '#cacaca',
-    shadowOffset: { width: 20, height: 20 },
-    shadowOpacity: 0.5,
-    shadowRadius: 20,
-    elevation: 20
   },
-  input: {}
+  add_button: {
+    width: '100%',
+    marginTop: 30,
+    padding: 15,
+    borderRadius: 15,
+    backgroundColor: '#345995',
+  },
 });

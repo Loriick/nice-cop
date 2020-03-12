@@ -28,11 +28,19 @@ export const CREATE_ARTICLE = gql`
       article {
         id
         title
-        category
         price
         state
+        size
+        category
         description
+        image {
+          url
+        }
         pictureUri
+        created_at
+        user {
+          username
+        }
       }
     }
   }

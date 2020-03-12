@@ -11,6 +11,7 @@ export const GET_USER_BY_ID = gql`
         size
         price
         description
+        pictureUri
         user {
           username
         }
