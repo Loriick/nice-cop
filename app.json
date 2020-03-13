@@ -1,7 +1,7 @@
 {
   "expo": {
     "scheme": "nice-cop",
-    "name": "Blank Template (TypeScript)",
+    "name": "Nice-cop",
     "slug": "nice-cop",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -26,6 +26,7 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": ""
   }
 }
