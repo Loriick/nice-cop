@@ -27,7 +27,7 @@ function AddArticleScreen({ navigation }) {
       const { articles } = cache.readQuery({ query: GET_ARTICLES });
       cache.writeQuery({
         query: GET_ARTICLES,
-        data: { articles: articles.concat([createArticles]) }
+        data: { articles: articles.concat(createArticles) }
       });
     }
   });
@@ -67,7 +67,7 @@ function AddArticleScreen({ navigation }) {
         pictureUri: resJson.secure_url
       }
     });
-    await Alert.alert('Article correctement créé 🔥🔥🔥');
+    await Alert.alert('Article correctement créé 🔥');
     await navigation.navigate('Feed');
   }
 

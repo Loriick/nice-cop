@@ -64,8 +64,8 @@ export function Routes() {
 
   return (
     <NavigationContainer>
-      <MainAppTabs />
-      {/* <AuthScreen /> */}
+      {/* <MainAppTabs /> */}
+      <AuthScreen />
     </NavigationContainer>
   );
 }
