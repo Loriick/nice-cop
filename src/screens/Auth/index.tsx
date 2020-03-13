@@ -5,14 +5,15 @@ import {
   View,
   StyleSheet,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import {
   Ionicons,
   MaterialCommunityIcons,
-  FontAwesome
+  FontAwesome,
 } from '@expo/vector-icons';
+import { AuthSession } from 'expo';
 
 export default function AuthScreen() {
   return (
@@ -26,13 +27,12 @@ export default function AuthScreen() {
             flex: 1,
             flexDirection: 'row',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
           }}
           onPress={async () => {
-            let res = await WebBrowser.openAuthSessionAsync(
-              'https://nice-cop.kevinmanssat.fr/connect/facebook?callback=nice-cop://home',
-              'https://nice-cop.kevinmanssat.fr/auth/facebook/callback'
-            );
+            let res = await AuthSession.startAsync({
+              authUrl: `https://nice-cop.kevinmanssat.fr/connect/facebook`,
+            });
 
             console.log(res);
           }}
@@ -53,7 +53,7 @@ export default function AuthScreen() {
             flex: 1,
             flexDirection: 'row',
             justifyContent: 'space-between',
-            alignItems: 'center'
+            alignItems: 'center',
           }}
           onPress={() => {
             WebBrowser.openBrowserAsync(
@@ -78,13 +78,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#3b5998',
     borderRadius: 7,
     paddingHorizontal: 15,
-    marginBottom: 15
+    marginBottom: 15,
   },
   google: {
     width: '80%',
     height: 60,
     backgroundColor: 'white',
     borderRadius: 7,
-    paddingHorizontal: 15
-  }
+    paddingHorizontal: 15,
+  },
 });
