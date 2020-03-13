@@ -1,10 +1,11 @@
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 import HomeStack from './screens/HomeStack/index';
 import AddArticleStack from './screens/AddArticleStack/index';
 import ProfileStack from './screens/Profile/index';
+import { BlurView } from 'expo-blur';
 
 type AppParamList = {
   Home: undefined;
@@ -36,11 +37,8 @@ export default function MainAppTabs() {
           },
         })}
         tabBarOptions={{
-          activeTintColor: '#fff',
-          inactiveTintColor: '#F0F0F0',
-          style: {
-            backgroundColor: '#fc381e',
-          },
+          activeTintColor: '#fc381e',
+          inactiveTintColor: '#cacaca',
         }}
       >
         <Tabs.Screen name="Home" component={HomeStack} />

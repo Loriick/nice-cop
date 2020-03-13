@@ -15,7 +15,7 @@ const initialState = {
   state: '',
   size: '',
   imageUri: '',
-  category: ''
+  category: '',
 };
 
 function AddArticleScreen({ navigation }) {
@@ -23,13 +23,24 @@ function AddArticleScreen({ navigation }) {
   const [picture64Base, setPicture64base] = useState(null);
 
   const [createArticles] = useMutation(CREATE_ARTICLE, {
-    update(cache, { data: { createArticles } }) {
+    update(
+      cache,
+      {
+        data: {
+          createArticles: { article },
+        },
+      }
+    ) {
       const { articles } = cache.readQuery({ query: GET_ARTICLES });
       cache.writeQuery({
         query: GET_ARTICLES,
+<<<<<<< HEAD
         data: { articles: articles.concat(createArticles) }
+=======
+        data: { articles: articles.concat([article]) },
+>>>>>>> form layout
       });
-    }
+    },
   });
 
   async function handleSubmit() {
@@ -39,24 +50,26 @@ function AddArticleScreen({ navigation }) {
 
     let pictureData = {
       file: picture64Base,
-      upload_preset: 'raycms'
+      upload_preset: 'raycms',
     };
 
     const res = await fetch(
-      'https://api.cloudinary.com/v1_1/USERNAME_STRAPI/image/upload',
+      'https://api.cloudinary.com/v1_1/dnetrjs9c/image/upload',
       {
         headers: {
-          'content-type': 'application/json'
+          'content-type': 'application/json',
         },
         method: 'POST',
         body: JSON.stringify(pictureData),
-        mode: 'cors'
+        mode: 'cors',
       }
     );
 
     const resJson = await res.json();
 
-    const { data } = await createArticles({
+    console.log(resJson);
+
+    await createArticles({
       variables: {
         title: values.title,
         category: values.category,
@@ -64,10 +77,11 @@ function AddArticleScreen({ navigation }) {
         state: values.state,
         user: 3,
         description: values.description,
-        pictureUri: resJson.secure_url
-      }
+        pictureUri: resJson.secure_url,
+      },
     });
-    await Alert.alert('Article correctement créé 🔥');
+    setValues(initialState);
+    await Alert.alert('Article correctement créé 🔥🔥🔥');
     await navigation.navigate('Feed');
   }
 
@@ -75,9 +89,9 @@ function AddArticleScreen({ navigation }) {
     ActionSheetIOS.showActionSheetWithOptions(
       {
         options: ['Prendre une photo', 'Choisir une photo', 'Anuler'],
-        cancelButtonIndex: 3
+        cancelButtonIndex: 3,
       },
-      buttonIndex => {
+      (buttonIndex) => {
         if (buttonIndex === 0) {
           openCamera();
         } else if (buttonIndex === 1) {
@@ -98,12 +112,12 @@ function AddArticleScreen({ navigation }) {
     let pickerResult = await ImagePicker.launchImageLibraryAsync({
       aspect: [1, 1],
       quality: 0.7,
-      base64: true
+      base64: true,
     });
     console.log(pickerResult);
     setValues({
       ...values,
-      imageUri: pickerResult?.uri
+      imageUri: pickerResult?.uri,
     });
     setPicture64base(`data:image/jpg;base64,${pickerResult?.base64}`);
   };
@@ -118,12 +132,12 @@ function AddArticleScreen({ navigation }) {
     const cameraResult = await ImagePicker.launchCameraAsync({
       aspect: [1, 1],
       quality: 0.7,
-      base64: true
+      base64: true,
     });
     console.log(cameraResult);
     setValues({
       ...values,
-      imageUri: cameraResult?.uri
+      imageUri: cameraResult?.uri,
     });
     setPicture64base(`data:image/jpg;base64,${cameraResult?.base64}`);
   };
@@ -146,7 +160,7 @@ export default function AddArticleStack() {
       <Stack.Screen
         name="AddArticleStack"
         options={{
-          headerTitle: 'Ajouter un article'
+          headerTitle: 'Ajouter un article',
         }}
         component={AddArticleScreen}
       />

@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
     width: '100%',
     resizeMode: 'contain',
     aspectRatio: 1 / 1,
+    marginBottom: 15,
   },
   title: {
     fontSize: 20,
