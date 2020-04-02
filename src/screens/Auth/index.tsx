@@ -1,21 +1,22 @@
-import React from 'react';
+import { Ionicons } from '@expo/vector-icons';
+import * as WebBrowser from 'expo-web-browser';
+import React, { useContext } from 'react';
 import {
-  Button,
   ImageBackground,
-  View,
   StyleSheet,
   Text,
   TouchableOpacity,
+  View,
 } from 'react-native';
-import * as WebBrowser from 'expo-web-browser';
-import {
-  Ionicons,
-  MaterialCommunityIcons,
-  FontAwesome,
-} from '@expo/vector-icons';
-import { AuthSession } from 'expo';
+import { AuthContext } from '../../context/AuthProvider';
 
-export default function AuthScreen() {
+export default function AuthScreen(props) {
+  const { login } = useContext(AuthContext);
+
+  async function loginOnPress(provider) {
+    await login(provider);
+  }
+
   return (
     <ImageBackground
       source={require('../../../assets/imgs/0e1bc81938dc62733266232095cdf99d.jpg')}
@@ -29,13 +30,7 @@ export default function AuthScreen() {
             justifyContent: 'space-between',
             alignItems: 'center',
           }}
-          onPress={async () => {
-            let res = await AuthSession.startAsync({
-              authUrl: `https://nice-cop.kevinmanssat.fr/connect/facebook`,
-            });
-
-            console.log(res);
-          }}
+          onPress={() => loginOnPress('facebook')}
         >
           <Ionicons
             name="logo-facebook"

@@ -34,11 +34,7 @@ function AddArticleScreen({ navigation }) {
       const { articles } = cache.readQuery({ query: GET_ARTICLES });
       cache.writeQuery({
         query: GET_ARTICLES,
-<<<<<<< HEAD
-        data: { articles: articles.concat(createArticles) }
-=======
         data: { articles: articles.concat([article]) },
->>>>>>> form layout
       });
     },
   });
